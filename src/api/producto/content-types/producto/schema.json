@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "productos",
+  "info": {
+    "singularName": "producto",
+    "pluralName": "productos",
+    "displayName": "producto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "categoria": {
+      "type": "string"
+    },
+    "producto_idd": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::detalle-venta.detalle-venta",
+      "mappedBy": "producto_id"
+    }
+  }
+}

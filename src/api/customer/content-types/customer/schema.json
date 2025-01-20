@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "singularName": "customer",
+    "pluralName": "customers",
+    "displayName": "Customer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "dni": {
+      "type": "biginteger"
+    },
+    "tel": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::venta.venta",
+      "mappedBy": "customer_id"
+    }
+  }
+}

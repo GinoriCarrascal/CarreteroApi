@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "detalle_ventas",
+  "info": {
+    "singularName": "detalle-venta",
+    "pluralName": "detalle-ventas",
+    "displayName": "detalleventa",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cantidad": {
+      "type": "integer"
+    },
+    "importe": {
+      "type": "decimal"
+    },
+    "precio": {
+      "type": "decimal"
+    },
+    "producto_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::producto.producto",
+      "inversedBy": "producto_idd"
+    },
+    "detalleventa": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::venta.venta",
+      "mappedBy": "venta_id"
+    }
+  }
+}

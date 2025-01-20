@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ventas",
+  "info": {
+    "singularName": "venta",
+    "pluralName": "ventas",
+    "displayName": "venta",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "metodo_de_pago": {
+      "type": "string"
+    },
+    "tipo_venta": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "hora_de_recojo": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "string"
+    },
+    "importe_total": {
+      "type": "decimal"
+    },
+    "venta_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::detalle-venta.detalle-venta",
+      "inversedBy": "detalleventa"
+    },
+    "customer_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "tel"
+    }
+  }
+}
