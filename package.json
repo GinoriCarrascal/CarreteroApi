@@ -22,9 +22,9 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": ">=18.0.0 <=22.x.x",
-    "npm": ">=6.0.0"
-  },
+  "node": "20.17.1",
+  "npm": "10.2.0"
+},
   "strapi": {
     "uuid": "86eead24-15b3-41ea-ae47-1bca18ec7b59"
   }
