@@ -18,11 +18,8 @@
     "dni": {
       "type": "biginteger"
     },
-    "tel": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::venta.venta",
-      "mappedBy": "customer_id"
+    "telefono": {
+      "type": "uid"
     }
   }
 }

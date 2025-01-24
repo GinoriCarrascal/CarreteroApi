@@ -30,17 +30,19 @@
     "importe_total": {
       "type": "decimal"
     },
-    "venta_id": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::detalle-venta.detalle-venta",
-      "inversedBy": "detalleventa"
+    "idVenta": {
+      "type": "uid"
     },
-    "customer_id": {
+    "customer": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::customer.customer",
-      "inversedBy": "tel"
+      "relation": "oneToOne",
+      "target": "api::customer.customer"
+    },
+    "iddetvent": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::detalle-venta.detalle-venta",
+      "mappedBy": "venta"
     }
   }
 }

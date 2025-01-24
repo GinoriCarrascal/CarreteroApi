@@ -4,7 +4,8 @@
   "info": {
     "singularName": "producto",
     "pluralName": "productos",
-    "displayName": "producto"
+    "displayName": "producto",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,11 +21,14 @@
     "categoria": {
       "type": "string"
     },
-    "producto_idd": {
+    "detalleventas": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::detalle-venta.detalle-venta",
-      "mappedBy": "producto_id"
+      "mappedBy": "idprod"
+    },
+    "precio": {
+      "type": "decimal"
     }
   }
 }

@@ -21,17 +21,20 @@
     "precio": {
       "type": "decimal"
     },
-    "producto_id": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::producto.producto",
-      "inversedBy": "producto_idd"
+    "iddetven": {
+      "type": "uid"
     },
-    "detalleventa": {
+    "idprod": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
+      "target": "api::producto.producto",
+      "inversedBy": "detalleventas"
+    },
+    "venta": {
+      "type": "relation",
+      "relation": "manyToOne",
       "target": "api::venta.venta",
-      "mappedBy": "venta_id"
+      "inversedBy": "iddetvent"
     }
   }
 }

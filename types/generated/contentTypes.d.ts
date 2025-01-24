@@ -393,7 +393,7 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     nombre: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    tel: Schema.Attribute.Relation<'oneToMany', 'api::venta.venta'>;
+    telefono: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -417,7 +417,8 @@ export interface ApiDetalleVentaDetalleVenta
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    detalleventa: Schema.Attribute.Relation<'oneToMany', 'api::venta.venta'>;
+    iddetven: Schema.Attribute.UID;
+    idprod: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
     importe: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -426,20 +427,18 @@ export interface ApiDetalleVentaDetalleVenta
     > &
       Schema.Attribute.Private;
     precio: Schema.Attribute.Decimal;
-    producto_id: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::producto.producto'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    venta: Schema.Attribute.Relation<'manyToOne', 'api::venta.venta'>;
   };
 }
 
 export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
   collectionName: 'productos';
   info: {
+    description: '';
     displayName: 'producto';
     pluralName: 'productos';
     singularName: 'producto';
@@ -453,6 +452,10 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descripcion: Schema.Attribute.Text;
+    detalleventas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::detalle-venta.detalle-venta'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -460,10 +463,7 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     nombre: Schema.Attribute.String;
-    producto_idd: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::detalle-venta.detalle-venta'
-    >;
+    precio: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -486,13 +486,15 @@ export interface ApiVentaVenta extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    customer_id: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::customer.customer'
-    >;
+    customer: Schema.Attribute.Relation<'oneToOne', 'api::customer.customer'>;
     direccion: Schema.Attribute.String;
     estado: Schema.Attribute.String;
     hora_de_recojo: Schema.Attribute.String;
+    iddetvent: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::detalle-venta.detalle-venta'
+    >;
+    idVenta: Schema.Attribute.UID;
     importe_total: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::venta.venta'> &
@@ -503,10 +505,6 @@ export interface ApiVentaVenta extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    venta_id: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::detalle-venta.detalle-venta'
-    >;
   };
 }
 
