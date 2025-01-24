@@ -18,8 +18,11 @@
     "dni": {
       "type": "biginteger"
     },
-    "telefono": {
+    "idcustomer": {
       "type": "uid"
+    },
+    "telefono": {
+      "type": "string"
     }
   }
 }
