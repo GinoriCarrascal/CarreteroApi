@@ -15,26 +15,17 @@
     "cantidad": {
       "type": "integer"
     },
-    "importe": {
-      "type": "decimal"
-    },
-    "precio": {
+    "precioTotal": {
       "type": "decimal"
     },
     "iddetven": {
       "type": "uid"
     },
-    "idprod": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::producto.producto",
-      "inversedBy": "detalleventas"
+    "nombre": {
+      "type": "string"
     },
-    "venta": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::venta.venta",
-      "inversedBy": "iddetvent"
+    "precioUnitario": {
+      "type": "decimal"
     }
   }
 }

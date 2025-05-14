@@ -23,6 +23,9 @@
     },
     "telefono": {
       "type": "string"
+    },
+    "ruc": {
+      "type": "biginteger"
     }
   }
 }

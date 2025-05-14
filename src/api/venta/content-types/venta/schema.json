@@ -38,11 +38,8 @@
       "relation": "oneToOne",
       "target": "api::customer.customer"
     },
-    "iddetvent": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::detalle-venta.detalle-venta",
-      "mappedBy": "venta"
+    "telefono": {
+      "type": "biginteger"
     }
   }
 }

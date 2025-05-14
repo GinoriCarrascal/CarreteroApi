@@ -21,12 +21,6 @@
     "categoria": {
       "type": "string"
     },
-    "detalleventas": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::detalle-venta.detalle-venta",
-      "mappedBy": "idprod"
-    },
     "precio": {
       "type": "decimal"
     }

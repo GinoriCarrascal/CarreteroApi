@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "direccions",
+  "info": {
+    "singularName": "direccion",
+    "pluralName": "direccions",
+    "displayName": "direccion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "direccion": {
+      "type": "string"
+    },
+    "preciodelivery": {
+      "type": "integer"
+    },
+    "cel": {
+      "type": "biginteger"
+    }
+  }
+}

@@ -394,6 +394,7 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     nombre: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    ruc: Schema.Attribute.BigInteger;
     telefono: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -419,20 +420,50 @@ export interface ApiDetalleVentaDetalleVenta
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     iddetven: Schema.Attribute.UID;
-    idprod: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
-    importe: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::detalle-venta.detalle-venta'
     > &
       Schema.Attribute.Private;
-    precio: Schema.Attribute.Decimal;
+    nombre: Schema.Attribute.String;
+    precioTotal: Schema.Attribute.Decimal;
+    precioUnitario: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    venta: Schema.Attribute.Relation<'manyToOne', 'api::venta.venta'>;
+  };
+}
+
+export interface ApiDireccionDireccion extends Struct.CollectionTypeSchema {
+  collectionName: 'direccions';
+  info: {
+    description: '';
+    displayName: 'direccion';
+    pluralName: 'direccions';
+    singularName: 'direccion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cel: Schema.Attribute.BigInteger;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    direccion: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::direccion.direccion'
+    > &
+      Schema.Attribute.Private;
+    preciodelivery: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -453,10 +484,6 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descripcion: Schema.Attribute.Text;
-    detalleventas: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::detalle-venta.detalle-venta'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -491,10 +518,6 @@ export interface ApiVentaVenta extends Struct.CollectionTypeSchema {
     direccion: Schema.Attribute.String;
     estado: Schema.Attribute.String;
     hora_de_recojo: Schema.Attribute.String;
-    iddetvent: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::detalle-venta.detalle-venta'
-    >;
     idVenta: Schema.Attribute.UID;
     importe_total: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -502,6 +525,7 @@ export interface ApiVentaVenta extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     metodo_de_pago: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.BigInteger;
     tipo_venta: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1020,6 +1044,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::customer.customer': ApiCustomerCustomer;
       'api::detalle-venta.detalle-venta': ApiDetalleVentaDetalleVenta;
+      'api::direccion.direccion': ApiDireccionDireccion;
       'api::producto.producto': ApiProductoProducto;
       'api::venta.venta': ApiVentaVenta;
       'plugin::content-releases.release': PluginContentReleasesRelease;
