@@ -1,6 +1,7 @@
-module.exports = {
-  // Otros plugins...
+module.exports = ({ env }) => ({
   'users-permissions': {
-    jwtSecret: process.env.jwtSecret || 'your-default-jwtSecret', // Opcional: agrega un valor predeterminado para desarrollo
+    config: {
+      jwtSecret: env('JWT_SECRET'),
+    },
   },
-};
+});
